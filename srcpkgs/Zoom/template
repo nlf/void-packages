@@ -1,0 +1,21 @@
+# Template file for 'Zoom'
+pkgname=Zoom
+version=2.7.162522.0121
+revision=1
+only_for_archs="x86_64"
+short_desc="Video conferencing for teams"
+maintainer="Nathan LaFreniere <quitlahok@gmail.com>"
+license="Proprietary"
+homepage="https://zoom.us"
+distfiles="https://zoom.us/client/${version}/zoom_x86_64.pkg.tar.xz"
+depends="fontconfig glib libpulseaudio libSM libX11 libxcb libXcomposite libXfixes libXi libXrandr libXrender libxshmfence libxslt libGL nss alsa-plugins-pulseaudio xcb-util-image xcb-util-keysyms"
+checksum=ed6600ece6d02f9f873dee5602ff74a4bb5382afc68794684de1a3647ff03e4d
+create_wrksrc=yes
+noverifyrdeps=yes
+noshlibprovides=yes
+nopie=yes
+
+do_install() {
+  vcopy opt /
+  vcopy usr /
+}

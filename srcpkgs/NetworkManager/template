@@ -13,7 +13,7 @@ configure_args="--without-dhcpcd --with-dhclient=/usr/bin/dhclient
  --with-modem-manager-1 --with-resolvconf=/usr/bin/resolvconf
  --with-session-tracking=$(vopt_if elogind elogind consolekit)
  --with-suspend-resume=$(vopt_if elogind elogind consolekit)
- --with-libnm-glib --disable-ifupdown
+ --with-libnm-glib --with-iwd --disable-ifupdown
  --with-systemdsystemunitdir=no --enable-polkit-agent --enable-tests=no
  --with-systemd-journal=no --with-systemd-logind=no --disable-gtk-doc
  --with-dbus-sys-dir=/etc/dbus-1/system.d

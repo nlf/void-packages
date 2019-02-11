@@ -1,0 +1,29 @@
+# Template file for 'mailspring'
+pkgname=mailspring
+version=1.5.6
+revision=1
+create_wrksrc=yes
+only_for_archs="x86_64"
+short_desc="The mail client"
+maintainer="Nathan LaFreniere <quitlahok@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://getmailspring.com"
+distfiles="https://github.com/Foundry376/Mailspring/releases/download/${version}/mailspring-${version}-amd64.deb"
+nopie=yes
+noshlibprovides=yes
+noverifyrdeps=yes
+alternatives="ms:/usr/bin/mailspring:/opt/mailspring/mailspring"
+checksum=544bed707867d4a2bbe1afccd3b36a2ea12b180ed06b371f13392ed06207e8e4
+
+do_extract() {
+  ar x "${XBPS_SRCDISTDIR}/${pkgname}-${version}/mailspring-${version}-amd64.deb"
+}
+
+do_install() {
+  vmkdir /opt
+  vmkdir /usr/share
+  tar xf data.tar.xz
+  vcopy usr/share/mailspring /opt
+  rm -rf usr/share/mailspring
+  vcopy usr/share/* /usr/share
+}
