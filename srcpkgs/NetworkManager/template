@@ -13,7 +13,7 @@ configure_args="--without-dhcpcd --with-dhclient=/usr/bin/dhclient
  --with-modem-manager-1 --with-resolvconf=/usr/bin/resolvconf
  --with-session-tracking=$(vopt_if elogind elogind consolekit)
  --with-suspend-resume=$(vopt_if elogind elogind consolekit)
- --with-libnm-glib --with-iwd --disable-ifupdown
+ --with-libnm-glib $(vopt_with iwd) --disable-ifupdown
  --with-systemdsystemunitdir=no --enable-polkit-agent --enable-tests=no
  --with-systemd-journal=no --with-systemd-logind=no --disable-gtk-doc
  --with-dbus-sys-dir=/etc/dbus-1/system.d
@@ -62,7 +62,7 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 
 # Package build options
-build_options="gir elogind"
+build_options="gir elogind iwd"
 case "$XBPS_TARGET_MACHINE" in
 	x86_64-musl) build_options_default+=" gir" ;;
 	*-musl) ;;
